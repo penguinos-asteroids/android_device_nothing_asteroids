@@ -52,6 +52,9 @@ TARGET_NO_RECOVERY := true
 AB_OTA_UPDATER := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.default
 
+# AVB
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+
 ifeq ($(BOARD_AVB_ENABLE), true)
     BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
     BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
@@ -64,11 +67,6 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
-
-# Use sha256 for dm-verity partitions
-BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
-BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 #Enable compilation of oem-extensions to recovery
 #These need to be explicitly
