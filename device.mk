@@ -29,11 +29,6 @@ TARGET_ENABLE_VM_SUPPORT := true
 #Enable SMCI-Listeners.
 TARGET_ENABLE_SMCI_SYSLISTENER := true
 
-# true: earlycon and console enabled
-# false: console explicitly disabled
-# <empty>: default from kernel
-TARGET_CONSOLE_ENABLED ?=
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Set GRF/Vendor freeze properties
