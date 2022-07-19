@@ -83,80 +83,6 @@ NEED_AIDL_NDK_PLATFORM_BACKEND := true
 # Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
 SYSTEMEXT_SEPARATE_PARTITION_ENABLE := true
 
-###########
-#QMAA flags starts
-###########
-#QMAA global flag for modular architecture
-#true means QMAA is enabled for system
-#false means QMAA is disabled for system
-
-TARGET_USES_QMAA := false
-
-#QMAA flag which is set to incorporate any generic dependencies
-#required for the boot to UI flow in a QMAA enabled target.
-#Set to false when all target level depenencies are met with
-#actual full blown implementations.
-TARGET_USES_QMAA_RECOMMENDED_BOOT_CONFIG := false
-
-#QMAA tech team flag to override global QMAA per tech team
-#true means overriding global QMAA for this tech area
-#false means using global, no override
-TARGET_USES_QMAA_OVERRIDE_RPMB := true
-TARGET_USES_QMAA_OVERRIDE_GPT  := true
-TARGET_USES_QMAA_OVERRIDE_DISPLAY := true
-TARGET_USES_QMAA_OVERRIDE_AUDIO   := true
-TARGET_USES_QMAA_OVERRIDE_VIDEO   := true
-TARGET_USES_QMAA_OVERRIDE_CAMERA  := true
-TARGET_USES_QMAA_OVERRIDE_GFX     := true
-TARGET_USES_QMAA_OVERRIDE_WFD     := true
-TARGET_USES_QMAA_OVERRIDE_GPS     := true
-TARGET_USES_QMAA_OVERRIDE_ANDROID_RECOVERY := true
-TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE := true
-TARGET_USES_QMAA_OVERRIDE_WLAN    := true
-TARGET_USES_QMAA_OVERRIDE_BLUETOOTH   := true
-TARGET_USES_QMAA_OVERRIDE_FM  := true
-TARGET_USES_QMAA_OVERRIDE_CVP  := true
-TARGET_USES_QMAA_OVERRIDE_FASTCV  := true
-TARGET_USES_QMAA_OVERRIDE_SCVE  := true
-TARGET_USES_QMAA_OVERRIDE_OPENVX  := true
-TARGET_USES_QMAA_OVERRIDE_DATA := true
-TARGET_USES_QMAA_OVERRIDE_DATA_NET := true
-TARGET_USES_QMAA_OVERRIDE_MSM_BUS_MODULE := true
-TARGET_USES_QMAA_OVERRIDE_KERNEL_TESTS_INTERNAL := true
-TARGET_USES_QMAA_OVERRIDE_MSMIRQBALANCE := true
-TARGET_USES_QMAA_OVERRIDE_DRM    := true
-TARGET_USES_QMAA_OVERRIDE_KMGK := true
-TARGET_USES_QMAA_OVERRIDE_MSMIRQBALANCE := true
-TARGET_USES_QMAA_OVERRIDE_VPP := true
-TARGET_USES_QMAA_OVERRIDE_GP := true
-TARGET_USES_QMAA_OVERRIDE_BIOMETRICS := true
-TARGET_USES_QMAA_OVERRIDE_PERF := true
-TARGET_USES_QMAA_OVERRIDE_SENSORS := true
-TARGET_USES_QMAA_OVERRIDE_SYNX := true
-TARGET_USES_QMAA_OVERRIDE_SECUREMSM_TESTS := true
-TARGET_USES_QMAA_OVERRIDE_SOTER := true
-TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := true
-TARGET_USES_QMAA_OVERRIDE_TFTP := true
-TARGET_USES_QMAA_OVERRIDE_EID := true
-TARGET_USES_QMAA_OVERRIDE_USB := true
-TARGET_USES_QMAA_OVERRIDE_DPM := true
-TARGET_USES_QMAA_OVERRIDE_DIAG := true
-TARGET_USES_QMAA_OVERRIDE_FTM := true
-TARGET_USES_QMAA_OVERRIDE_VIBRATOR := true
-TARGET_USES_QMAA_OVERRIDE_FASTRPC := true
-TARGET_USES_QMAA_OVERRIDE_SPU := true
-
-#Full QMAA HAL List
-QMAA_HAL_LIST := audio video camera display sensors gps
-
-ifeq ($(TARGET_USES_QMAA), true)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.confqmaa=true
-endif
-
-###########
-#QMAA flags ends
-
 #Suppot to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
@@ -248,22 +174,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.perf.scroll_opt=1 \
     vendor.perf.framepacing.enable=1
 
-#----------------------------------------------------------------------
-# perf specific
-#----------------------------------------------------------------------
-ifeq ($(TARGET_USES_QMAA), true)
-    ifneq ($(TARGET_USES_QMAA_OVERRIDE_PERF), true)
-        TARGET_DISABLE_PERF_OPTIMIZATIONS := true
-    else
-        TARGET_DISABLE_PERF_OPTIMIZATIONS := false
-    endif
-else
-    TARGET_DISABLE_PERF_OPTIMIZATIONS := false
-endif
-# /* Disable perf opts */
-
-
-
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
@@ -277,17 +187,6 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 QCOM_BOARD_PLATFORMS += volcano
 
 TARGET_USES_QSSI := true
-
-###QMAA Indicator Start###
-
-#Full QMAA HAL List
-QMAA_HAL_LIST :=
-
-#Indicator for each enabled QMAA HAL for this target. Each tech team locally verified their QMAA HAL and ensure code is updated/merged, then add their HAL module name to QMAA_ENABLED_HAL_MODULES as an QMAA enabling completion indicator
-QMAA_ENABLED_HAL_MODULES :=
-QMAA_ENABLED_HAL_MODULES += sensors
-
-###QMAA Indicator End###
 
 #Default vendor image configuration
 ENABLE_VENDOR_IMAGE := true
@@ -368,11 +267,7 @@ TARGET_USES_IMAGE_GEN_TOOL := true
 
 # QCV allows multiple chipsets to be supported on a single vendor.
 # Add vintf device manifests for chipsets in volcano QCV family below.
-ifeq ($(TARGET_USES_QMAA), true)
-TARGET_USES_QCV := false
-else
 TARGET_USES_QCV := true
-endif
 
 DEVICE_MANIFEST_SKUS := volcano
 DEVICE_MANIFEST_VOLCANO_FILES := $(DEVICE_PATH)/manifest_volcano.xml
@@ -475,15 +370,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/charger_fw_fstab.qti:$(TARGET_COPY_OUT_VENDO
 PRODUCT_BOOT_JARS += tcmiface
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
-ifeq ($(TARGET_USES_QMAA), true)
-ifneq ($(TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE),true)
-PRODUCT_ENABLE_QESDK := false
-else
 PRODUCT_ENABLE_QESDK := true
-endif
-else
-PRODUCT_ENABLE_QESDK := true
-endif
 
 # Vendor property to enable advanced network scanning
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -520,12 +407,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-ifneq ($(TARGET_USES_QMAA), true)
-ifeq ($(TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE),true)
 #enable virtualization service
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
-endif
-endif
 
 ###################################################################################
 # This is the End of target.mk file.
