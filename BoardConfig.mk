@@ -57,9 +57,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 TARGET_COPY_OUT_ODM := odm
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
-ifeq ($(BOARD_AVB_ENABLE),true)
-AB_OTA_PARTITIONS ?= boot init_boot vendor_boot recovery vendor vendor_dlkm system_dlkm odm dtbo vbmeta
-endif
+AB_OTA_PARTITIONS ?= boot init_boot vendor_boot recovery vendor vendor_dlkm system_dlkm odm dtbo vbmeta system system_ext product
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 
 TARGET_NO_RECOVERY := true
@@ -74,6 +72,11 @@ ifeq ($(BOARD_AVB_ENABLE), true)
     BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 endif
 
+# Use sha256 for dm-verity partitions
+BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+
 #Enable compilation of oem-extensions to recovery
 #These need to be explicitly
 ifneq ($(AB_OTA_UPDATER),true)
@@ -81,6 +84,9 @@ ifneq ($(AB_OTA_UPDATER),true)
 endif
 
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 BOARD_USES_VENDOR_DLKMIMAGE := true
@@ -114,6 +120,10 @@ else
     BOARD_DTBOIMG_PARTITION_SIZE := 0x2100000
 endif
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_PRODUCTIMAGE := true
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Use sha256 hash algorithm for system_dlkm partition
