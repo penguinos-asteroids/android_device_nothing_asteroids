@@ -143,7 +143,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=enforce
 TARGET_DEFINES_DALVIK_HEAP := true
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, device/qcom/vendor-common/common64.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Below perf props should be part of vendor/build.prop
