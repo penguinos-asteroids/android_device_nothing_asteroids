@@ -151,11 +151,6 @@ TARGET_USES_QCOM_BSP := false
 # RRO configuration
 TARGET_USES_RRO := true
 
-###########
-# Target configurations
-
-QCOM_BOARD_PLATFORMS += volcano
-
 TARGET_USES_QSSI := true
 
 #Default vendor image configuration
