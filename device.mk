@@ -143,9 +143,6 @@ PRODUCT_PACKAGES += \
     fstab.emmc \
     init.target.rc
 
-# privapp-permissions whitelisting (To Fix CTS :privappPermissionsMustBeEnforced)
-PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=enforce
-
 TARGET_DEFINES_DALVIK_HEAP := true
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
