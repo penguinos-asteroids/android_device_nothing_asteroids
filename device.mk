@@ -118,7 +118,6 @@ PRODUCT_PACKAGES += \
     fstab.emmc \
     init.target.rc
 
-TARGET_DEFINES_DALVIK_HEAP := true
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
