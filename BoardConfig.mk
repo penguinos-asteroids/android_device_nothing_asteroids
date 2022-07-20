@@ -31,8 +31,6 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/volcano_tz_security_profile.xml
 
-USE_OPENGL_RENDERER := true
-
 # Build AVF debug policy device tree overlay image
 PRODUCT_BUILD_DPM_IMAGE := true
 
