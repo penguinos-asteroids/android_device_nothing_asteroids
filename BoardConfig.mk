@@ -15,10 +15,6 @@ TARGET_CPU_VARIANT := kryo785
 
 BOARD_RAMDISK_USE_LZ4 := true
 
--include $(QCPATH)/common/volcano/BoardConfigVendor.mk
-
-SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/volcano_tz_security_profile.xml
-
 # Build AVF debug policy device tree overlay image
 PRODUCT_BUILD_DPM_IMAGE := true
 
@@ -166,21 +162,12 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
-#Enable PD locater/notifier
-TARGET_PD_SERVICE_ENABLED := true
-
-#Enable peripheral manager
-TARGET_PER_MGR_ENABLED := true
-
 #Add non-hlos files to ota packages
 ADD_RADIO_FILES := false
 
 
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true
-
-#flag for qspm compilation
-TARGET_USES_QSPM := true
 
 #namespace definition for librecovery_updater
 #differentiate legacy 'sg' or 'bsg' framework
