@@ -38,9 +38,6 @@ PRODUCT_BUILD_DPM_IMAGE := true
 # Firmware
 ADD_RADIO_FILES := false
 
-# ION
-TARGET_USES_NEW_ION_API := true
-
 # Kernel
 BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.memcg=1 androidboot.usbcontroller=a600000.dwc3 androidboot.load_modules_parallel=true
 BOARD_BOOTCONFIG += androidboot.hypervisor.protected_vm.supported=true
