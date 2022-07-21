@@ -182,8 +182,6 @@ endif
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
 
-USE_LIB_PROCESS_GROUP := true
-
 # Dumpstate Feature Flag
 PRODUCT_ENABLE_DUMPSTATE_SUPPORT := true
 
