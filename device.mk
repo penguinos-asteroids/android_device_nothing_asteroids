@@ -6,8 +6,6 @@ DEVICE_PATH := device/nothing/asteroids
 TARGET_BOARD_PLATFORM := volcano
 TARGET_BOOTLOADER_BOARD_NAME := volcano
 
-BUILD_BROKEN_DUP_RULES := true
-
 #Flag to Enable 64 bit only configuration
 TARGET_SUPPORTS_64_BIT_ONLY := true
 
