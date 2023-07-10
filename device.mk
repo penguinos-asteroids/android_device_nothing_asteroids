@@ -240,13 +240,7 @@ QTI_CAMERA_AON_SERVICE := 1.2
 # Enable compilation of image_generation_tool
 TARGET_USES_IMAGE_GEN_TOOL := true
 
-# QCV allows multiple chipsets to be supported on a single vendor.
-# Add vintf device manifests for chipsets in volcano QCV family below.
-TARGET_USES_QCV := true
-
-DEVICE_MANIFEST_SKUS := volcano
-DEVICE_MANIFEST_VOLCANO_FILES := $(DEVICE_PATH)/manifest_volcano.xml
-
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest_volcano.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
 # Enable Camera techpack with VSDK
@@ -259,8 +253,6 @@ endif
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
-
-
 
 USE_LIB_PROCESS_GROUP := true
 
