@@ -38,10 +38,6 @@ BOARD_API_LEVEL := 34
 # Opt out of 16K alignment changes
 PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
 
-# Set SoC manufacturer property
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.soc.manufacturer=QTI
-
 PRODUCT_BUILD_SYSTEM_IMAGE := true
 PRODUCT_BUILD_SYSTEM_OTHER_IMAGE := false
 PRODUCT_BUILD_VENDOR_IMAGE := true
@@ -139,13 +135,6 @@ TARGET_DEFINES_DALVIK_HEAP := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
-# Below perf props should be part of vendor/build.prop
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    ro.vendor.perf-hal.ver=3.0 \
-    ro.vendor.perf.scroll_opt=1 \
-    vendor.perf.framepacing.enable=1
-
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
@@ -176,10 +165,6 @@ PRODUCT_HOST_PACKAGES += \
 
 PRODUCT_PACKAGES += \
   update_engine_sideload
-
-# Enable incremental fs
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.incremental.enable=yes
 
 ifneq (,$(wildcard $(QCPATH)/vsdk-tools))
 PRODUCT_HOST_PACKAGES += \
@@ -268,13 +253,6 @@ TARGET_MOUNT_POINTS_SYMLINKS := false
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
 
-# system prop for enabling QFS (QTI Fingerprint Solution)
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qfp=true
-#target specific runtime prop for qspm
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qspm.enable=true
-
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
@@ -301,13 +279,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     wfd \
     wlan
 
-# Vendor property to enable advanced network scanning
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.radio.enableadvancedscan=true
-
-# Enable Fuse Passthrough
-PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
-
 # ODM ueventd.rc
 # - only for use with VM support right now
 ifeq ($(TARGET_ENABLE_VM_SUPPORT),true)
@@ -328,10 +299,6 @@ PRODUCT_PACKAGES_DEBUG += bti_test_prebuilt \
 ##Armv9-Tests##
 
 PRODUCT_PACKAGES_DEBUG += thermal-test-client
-
-# Mediaserver 64 Bit enable
-PRODUCT_PROPERTY_OVERRIDES += \
-     ro.mediaserver.64b.enable=true
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)

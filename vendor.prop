@@ -1,0 +1,26 @@
+# Advanced network scanning
+persist.vendor.radio.enableadvancedscan=true
+
+# Fuse Passthrough
+persist.sys.fuse.passthrough.enable=true
+
+# Incremental fs
+ro.incremental.enable=yes
+
+# Manufacturer
+ro.soc.manufacturer=QTI
+
+# Mediaserver 64 Bit enable
+ro.mediaserver.64b.enable=true
+
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf-hal.ver=3.0
+ro.vendor.perf.scroll_opt=1
+vendor.perf.framepacing.enable=1
+
+# QFS (QTI Fingerprint Solution)
+persist.vendor.qfp=true
+
+# QSPM
+ro.vendor.qspm.enable=true
