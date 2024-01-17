@@ -1,63 +1,113 @@
 DEVICE_PATH := device/nothing/asteroids
+
 # device/qcom/iot/volcano/target.mk will only be present for iot target.
 # It will not affect non-IOT target where it would be absent.
 -include $(TOPDIR)device/qcom/iot/volcano/target.mk
 
-TARGET_BOARD_PLATFORM := volcano
-TARGET_BOOTLOADER_BOARD_NAME := volcano
-
-#Flag to Enable 64 bit only configuration
-TARGET_SUPPORTS_64_BIT_ONLY := true
-
-# Default Android A/B configuration
-# Enable virtual A/B
+# A/B
 ENABLE_VIRTUAL_AB := true
-# Enable virtual A/B compression
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
 
-# Enable debugfs restrictions
-PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
 
-#Enable vm support
-TARGET_ENABLE_VM_SUPPORT := true
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
 
-#Enable SMCI-Listeners.
-TARGET_ENABLE_SMCI_SYSLISTENER := true
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_engine_client \
+    update_verifier \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+PRODUCT_PACKAGES += \
+    update_engine_sideload
 
-# Set GRF/Vendor freeze properties
-BOARD_SHIPPING_API_LEVEL := 34
-BOARD_API_LEVEL := 34
-
-# Opt out of 16K alignment changes
-PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
-
-# Enable AVB 2.0
-BOARD_AVB_ENABLE := true
-
-# Disable verified boot checks in abl if AVB is not enabled
-BOARD_ABL_SIMPLE := false
-
+# AIDL
 NEED_AIDL_NDK_PLATFORM_BACKEND := true
 
-#Suppot to compile recovery without msm headers
-TARGET_HAS_GENERIC_KERNEL_HEADERS := true
-
-SHIPPING_API_LEVEL := 34
+# API
+BOARD_API_LEVEL := 34
+BOARD_SHIPPING_API_LEVEL := 34
 PRODUCT_SHIPPING_API_LEVEL := 34
+SHIPPING_API_LEVEL := 34
 
-# Set kernel version and ion flags
-TARGET_KERNEL_VERSION := 5.15
+# APEX
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Architecture
+TARGET_BOARD_PLATFORM := volcano
+TARGET_BOOTLOADER_BOARD_NAME := volcano
+TARGET_SUPPORTS_64_BIT_ONLY := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+
+# AVB
+BOARD_AVB_ENABLE := true
+BOARD_ABL_SIMPLE := false
+
+# Biometrics
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+
+# Camera
+ifneq (,$(wildcard $(QCPATH)/chi-cdk))
+include $(QCPATH)/chi-cdk/configs/camera_techpack.mk
+else ifneq (,$(wildcard $(QCPATH)/camx/chi-cdk))
+include $(QCPATH)/camx/chi-cdk/configs/camera_techpack.mk
+endif
+
+QTI_CAMERA_PROVIDER_SERVICE := 2.7
+QTI_CAMERA_AON_SERVICE := 1.2
+
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
+# DebugFS
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+
+# Dumpstate
+PRODUCT_ENABLE_DUMPSTATE_SUPPORT := true
+
+# Emulated Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Filesystem
+PRODUCT_PACKAGES += \
+    fs_config_files
+
+# FM
+BOARD_HAVE_QCOM_FM := false
+
+# Image Generation Tool
+TARGET_USES_IMAGE_GEN_TOOL := true
+
+# Init
+PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
+PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc
+
+PRODUCT_PACKAGES += \
+    fstab.default \
+    fstab.emmc \
+    init.target.rc
+
+# ION
 TARGET_USES_NEW_ION := true
 
-# Disable DLKM generation until build support is available
+# Kernel
+TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 TARGET_KERNEL_DLKM_DISABLE := false
+TARGET_KERNEL_VERSION := 5.15
 
-# Tech specific flags
 TARGET_KERNEL_DLKM_AUDIO_OVERRIDE := true
 TARGET_KERNEL_DLKM_BT_OVERRIDE := true
 TARGET_KERNEL_DLKM_CAMERA_OVERRIDE := true
@@ -79,116 +129,83 @@ TARGET_KERNEL_DLKM_DATAIPA_OVERRIDE := true
 TARGET_KERNEL_DLKM_FASTRPC_OVERRIDE := true
 TARGET_KERNEL_DLKM_SPU_OVERRIDE := true
 
-#####Dynamic partition Handling
-###
-#### Turning this flag to TRUE will enable dynamic partition/super image creation.
-PRODUCT_BUILD_ODM_IMAGE := true
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_PACKAGES += fastbootd
-# Add default implementation of fastboot AIDL.
-PRODUCT_PACKAGES += android.hardware.fastboot-service.example_recovery
-
-PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
-PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc
+# Kernel Modules
+KERNEL_MODULES_INSTALL := dlkm
+KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
 
 ifneq ("$(wildcard device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist)", "")
 PRODUCT_COPY_FILES += device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 endif
 
-BOARD_HAVE_QCOM_FM := false
+# Manifests
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest_volcano.xml
+DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
-# Init
+# Page size
+PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
+
+# Partitions - Dynamic
+PRODUCT_BUILD_ODM_IMAGE := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 PRODUCT_PACKAGES += \
-    fstab.default \
-    fstab.emmc \
-    init.target.rc
+    android.hardware.fastboot-service.example_recovery \
+    fastbootd
 
+# Partitions - FRP
+BOARD_FRP_PARTITION_NAME := frp
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+# Partitions - Vendor
+ENABLE_VENDOR_IMAGE := true
+
+# QRTR
+PRODUCT_PACKAGES += \
+    qrtr-ns \
+    qrtr-lookup \
+    libqrtr
+
+# QSPA
+PRODUCT_PACKAGES += \
+    vendor.qti.qspa-service \
+    qspa-testclient \
+    qspa_vendor.rc
+
+# QSSI configuration
+TARGET_USES_QSSI := true
 
 # RRO configuration
 TARGET_USES_RRO := true
 
-TARGET_USES_QSSI := true
+# SMCI
+TARGET_ENABLE_SMCI_SYSLISTENER := true
 
-#Default vendor image configuration
-ENABLE_VENDOR_IMAGE := true
-
-# default is nosdcard, S/W button enabled in resource
+# Storage
 PRODUCT_CHARACTERISTICS := nosdcard
 
-BOARD_FRP_PARTITION_NAME := frp
+# Thermal
+PRODUCT_PACKAGES_DEBUG += \
+    thermal-test-client
 
-PRODUCT_PACKAGES += fs_config_files
-
-# A/B related packages
-PRODUCT_PACKAGES += update_engine \
-    update_engine_client \
-    update_verifier \
-    android.hardware.boot-service.qti \
-    android.hardware.boot-service.qti.recovery
-
-PRODUCT_PACKAGES += \
-  update_engine_sideload
-
-ifneq (,$(wildcard $(QCPATH)/vsdk-tools))
-PRODUCT_HOST_PACKAGES += \
-    install_vsdk_py2
-PRODUCT_HOST_PACKAGES += \
-    install_vsdk_py3
-PRODUCT_HOST_PACKAGES += \
-    vsdk-metadata
-endif
-
-# QRTR related packages
-PRODUCT_PACKAGES += qrtr-ns
-PRODUCT_PACKAGES += qrtr-lookup
-PRODUCT_PACKAGES += libqrtr
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
-    POSTINSTALL_OPTIONAL_vendor=true
-
-# Macro allows Camera module to use new service
-QTI_CAMERA_PROVIDER_SERVICE := 2.7
-QTI_CAMERA_AON_SERVICE := 1.2
-
-# Enable compilation of image_generation_tool
-TARGET_USES_IMAGE_GEN_TOOL := true
-
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest_volcano.xml
-DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
-
-# Enable Camera techpack with VSDK
-ifneq (,$(wildcard $(QCPATH)/chi-cdk))
-include $(QCPATH)/chi-cdk/configs/camera_techpack.mk
-else ifneq (,$(wildcard $(QCPATH)/camx/chi-cdk))
-include $(QCPATH)/camx/chi-cdk/configs/camera_techpack.mk
-endif
-
-# Kernel modules install path
-KERNEL_MODULES_INSTALL := dlkm
-KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
-
-# Dumpstate Feature Flag
-PRODUCT_ENABLE_DUMPSTATE_SUPPORT := true
-
-#Enable full treble flag
+# Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
-# Fingerprint feature
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
+# Virtualization
+TARGET_ENABLE_VM_SUPPORT := true
+$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
+
+ifeq ($(TARGET_ENABLE_VM_SUPPORT),true)
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/ueventd-odm.rc:$(TARGET_COPY_OUT_ODM)/etc/ueventd.rc
+PRODUCT_PACKAGES += vmmgr vmmgr.rc vmmgr.conf
+endif
+
+# VSDK
+ifneq (,$(wildcard $(QCPATH)/vsdk-tools))
+PRODUCT_HOST_PACKAGES += \
+    install_vsdk_py2 \
+    install_vsdk_py3 \
+    vsdk-metadata
+endif
 
 # QTI Components
 TARGET_COMMON_QTI_COMPONENTS := \
@@ -209,23 +226,3 @@ TARGET_COMMON_QTI_COMPONENTS := \
     vibrator \
     wfd \
     wlan
-
-# ODM ueventd.rc
-# - only for use with VM support right now
-ifeq ($(TARGET_ENABLE_VM_SUPPORT),true)
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/ueventd-odm.rc:$(TARGET_COPY_OUT_ODM)/etc/ueventd.rc
-PRODUCT_PACKAGES += vmmgr vmmgr.rc vmmgr.conf
-endif
-
-#qspa service
-PRODUCT_PACKAGES += vendor.qti.qspa-service qspa-testclient
-
-PRODUCT_PACKAGES += qspa_vendor.rc
-
-PRODUCT_PACKAGES_DEBUG += thermal-test-client
-
-# Enable support for APEX updates
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
-#enable virtualization service
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
