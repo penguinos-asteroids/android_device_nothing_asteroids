@@ -174,6 +174,10 @@ TARGET_USES_RRO := true
 # SMCI
 TARGET_ENABLE_SMCI_SYSLISTENER := true
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH)
+
 # Storage
 PRODUCT_CHARACTERISTICS := nosdcard
 
