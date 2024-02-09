@@ -139,3 +139,6 @@ TARGET_USES_SMMU_PROXY := true
 SOONG_CONFIG_NAMESPACES += ufsbsg
 SOONG_CONFIG_ufsbsg += ufsframework
 SOONG_CONFIG_ufsbsg_ufsframework := bsg
+
+# WLAN
+include device/qcom/wlan/volcano/BoardConfigWlan.mk
