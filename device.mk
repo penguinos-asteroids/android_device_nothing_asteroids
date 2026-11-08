@@ -170,6 +170,11 @@ TARGET_USES_QSSI := true
 # RRO configuration
 TARGET_USES_RRO := true
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors-service.multihal \
+    sensors.dynamic_sensor_hal
+
 # SMCI
 TARGET_ENABLE_SMCI_SYSLISTENER := true
 

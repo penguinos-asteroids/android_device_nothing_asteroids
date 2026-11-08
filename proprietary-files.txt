@@ -1311,6 +1311,7 @@ vendor/bin/sscrpcd
 vendor/etc/init/init.vendor.sensors.rc
 vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
+vendor/lib64/sensors.qsh.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorslog.so
 vendor/lib64/libsns_device_mode_stub.so
@@ -1392,14 +1393,12 @@ vendor/etc/sensors/config/volcano_sx932x_0.json
 vendor/etc/sensors/config/volcano_tmd2755_0.json
 vendor/etc/sensors/config/volcano_vertigo_lsm6dso_0.json
 vendor/etc/sensors/config/volcano_vertigo_mmc56x3x_0.json
+vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sns_reg_config
 
 # Sensors (HAL)
-vendor/bin/hw/android.hardware.sensors-service.multihal
 vendor/bin/hw/vendor.noth.hardware.sensor.sensor_extension-service
-vendor/etc/init/android.hardware.sensors-service-multihal.rc
 vendor/etc/init/vendor.noth.hardware.sensor.sensor_extension-service.rc
-vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml
 vendor/etc/vintf/manifest/vendor.noth.hardware.sensor.sensor_extension-service.xml
 vendor/lib64/libprotobuf-cpp-lite-21.7.so
 vendor/lib64/libsensor_extension.so
