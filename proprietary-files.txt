@@ -154,6 +154,7 @@ vendor/lib64/libsoc_helper_jni.so
 
 # Bluetooth (A2DP)
 vendor/lib64/btaudio_offload_if.so
+vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
@@ -538,6 +539,7 @@ vendor/lib64/libbitmlengine.so
 vendor/lib64/libbitmlenginev2.so
 vendor/lib64/libcamerapostproc.so
 vendor/lib64/libcamxcommonutils.so
+vendor/lib64/libcommonchiutils.so
 vendor/lib64/libcamxexternalformatutils.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxhwnodecontext.so
@@ -597,6 +599,7 @@ vendor/lib64/libportrait_repair_qnn.so
 vendor/lib64/libqll.so
 vendor/lib64/libqll10.so
 vendor/lib64/libqllengine.so
+vendor/lib64/libqsh.so
 vendor/lib64/libqshcamera.so
 vendor/lib64/libsfeShiftExtrapolation.so
 vendor/lib64/libstfaceunlockppl.so
@@ -840,6 +843,7 @@ vendor/lib64/vendor.libdpmframework.so
 vendor/lib64/vendor.libdpmtcm.so
 vendor/lib64/vendor.qti.hardware.dpmservice@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.dpmaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # DSP
 vendor/bin/dspservice
@@ -864,6 +868,7 @@ vendor/lib64/libfastcvopt.so
 # Fingerprint
 vendor/lib64/hw/fingerprint.default.so
 vendor/lib64/libgf_hal.so
+vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint.so
 
 # Fingerprint (firmware)
 vendor/firmware/goodixfp64.b00
@@ -1001,6 +1006,9 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.1.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.ims.rcsconfig@2.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.ims.rcsconfig@2.1.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.imsrtpservice@3.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ImsRtpService-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ImsRtpService-aidl-Impl.so
 
 # Keymaster
 vendor/lib64/libkeymasterdeviceutils.so
@@ -1134,6 +1142,7 @@ vendor/etc/vintf/manifest/power.stats.xml
 vendor/lib64/libqcc_file_agent.so
 vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.qccsyshal@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.qccsyshal@1.2.so;MODULE_SUFFIX=_vendor
 
 # QCV
 vendor/bin/init.qti.qcv.sh
@@ -1184,6 +1193,7 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
+vendor/lib64/vendor.qti.hardware.qseecom-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # RemoteFS
 vendor/bin/rmt_storage
@@ -1195,6 +1205,7 @@ vendor/bin/hw/qcrilNrd
 vendor/bin/ks
 vendor/bin/pd-mapper
 vendor/bin/qms;DISABLE_CHECKELF
+vendor/lib64/vendor.qti.hardware.bttpi-V3-ndk.so;MODULE_SUFFIX=_vendor
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
 vendor/bin/qrtr-ns
@@ -1392,6 +1403,7 @@ vendor/etc/vintf/manifest/android.hardware.sensors-multihal.xml
 vendor/etc/vintf/manifest/vendor.noth.hardware.sensor.sensor_extension-service.xml
 vendor/lib64/libprotobuf-cpp-lite-21.7.so
 vendor/lib64/libsensor_extension.so
+vendor/lib64/vendor.noth.hardware.sensor.sensor_extension-V1-ndk_platform.so
 
 # SMC Invoke
 vendor/etc/ssg/ta_config.json
@@ -1530,3 +1542,63 @@ vendor/lib64/libwfduibcsrcinterface_vendor.so
 vendor/lib64/libwfdutils_proprietary.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
+
+# Dependencies (Radio)
+vendor/lib64/qcrilNrSecureMode.so
+vendor/lib64/qcrilNr_aidl_IRadioConfig.so
+vendor/lib64/qcrilNr_aidl_IRadioMessaging.so
+vendor/lib64/qcrilNr_aidl_IRadioModem.so
+vendor/lib64/qcrilNr_aidl_IRadioNetwork.so
+vendor/lib64/qcrilNr_aidl_IRadioSap.so
+vendor/lib64/qcrilNr_aidl_IRadioSim.so
+vendor/lib64/qcrilNr_aidl_IRadioVoice.so
+vendor/lib64/qcrilNr_aidl_SecureElementService.so
+vendor/lib64/qcrilNr_aidl_UimLpaService.so
+vendor/lib64/qcrilNr_aidl_UimRemoteClient.so
+vendor/lib64/qcrilNr_aidl_UimRemoteServer.so
+vendor/lib64/qcrilNr_aidl_UimService.so
+vendor/lib64/qcrilNr_aidl_common.so
+vendor/lib64/vendor.qti.hardware.radio.am-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.atfwd-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.ims-V16-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.lpa-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.qcrilhook-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradio-V11-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.uim-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_client-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_server-V1-ndk.so
+
+# Dependencies (IMS)
+vendor/lib64/vendor.qti.hardware.mwqemadapteraidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.callcapabilityaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.configaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.connectionaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.factoryaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.rcssipaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.ims.rcsuceaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+
+# Dependencies (Camera)
+vendor/lib64/com.qti.camx.chiiqutils.so
+vendor/lib64/hw/libproviderextension.so
+vendor/lib64/com.qti.feature2.mfsr.milos.so
+vendor/lib64/libvega_common.so
+vendor/lib64/libvidhance.so
+vendor/lib64/libwa_opticalzoomfactor.so
+vendor/lib64/libwa_sat.so
+vendor/lib64/vendor.noth.hardware.camera-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.camera.aon-service-impl.so
+vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so
+
+# Dependencies (Misc)
+vendor/lib64/libarmemlog.so
+vendor/lib64/libbluetooth_audio_session_aidl_qti.so
+vendor/lib64/libnicm.so
+vendor/lib64/libnicm_dsi.so
+vendor/lib64/libnicm_utils.so
+vendor/lib64/libqcc_sdk.so
+vendor/lib64/libwifiobserver.so
+vendor/lib64/vendor.qti.gnss-V6-ndk.so
+vendor/lib64/vendor.qti.hardware.data.connectionaidl-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.iwlandata-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.embmsslaidl-V1-ndk.so
