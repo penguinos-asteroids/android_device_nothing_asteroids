@@ -1109,7 +1109,6 @@ vendor/lib64/libQnnHtp.so
 vendor/etc/libnfc-nci.conf
 
 # NFC (ST)
-odm/etc/vintf/manifest.xml
 odm/etc/vintf/manifest_JPN.xml
 vendor/bin/hw/android.hardware.nfc-service-st
 vendor/etc/init/nfc-service-st.rc
