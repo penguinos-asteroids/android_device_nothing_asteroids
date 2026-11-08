@@ -585,6 +585,7 @@ vendor/lib64/libntcamskia.so;DISABLE_CHECKELF
 vendor/lib64/libntcamthread.so
 vendor/lib64/libntcamultrahdr.so
 vendor/lib64/libntcamyuv.so
+vendor/lib64/libntcamera2ndk_vendor_v2.so
 vendor/lib64/libntf.so
 vendor/lib64/libntofflinepostproc.so
 vendor/lib64/libopencv.so
@@ -1241,6 +1242,8 @@ vendor/lib64/librilqmimiscservices.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/qcrilInterfaces.so
 vendor/lib64/qcrilIntermodulemsgs.so
+vendor/lib64/vendor.qti.hardware.radio.common-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.radio.qtiradioconfig-V6-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/qcrilMarshal.so
 vendor/lib64/qcrilNrQmiModule.so
 vendor/lib64/qcrilNr_aidl_IQtiRadioConfig.so
@@ -1252,6 +1255,9 @@ vendor/lib64/qtiril-utils.so
 vendor/lib64/qtiwakelock.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.connection@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.connectionfactory-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.dataactivity-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.ka-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.radio.am@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so;MODULE_SUFFIX=_vendor
