@@ -225,3 +225,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     vibrator \
     wfd \
     wlan
+
+# Vendor Makefile
+$(call inherit-product, vendor/nothing/asteroids/asteroids-vendor.mk)

@@ -148,3 +148,6 @@ SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
 # WLAN
 include device/qcom/wlan/volcano/BoardConfigWlan.mk
+
+# Vendor BoardConfig
+include vendor/nothing/asteroids/BoardConfigVendor.mk
