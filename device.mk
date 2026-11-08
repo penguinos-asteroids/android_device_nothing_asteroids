@@ -133,6 +133,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/modules/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 
 # Manifests
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/asteroids_vendor_framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest_volcano.xml
 
 # Page size
