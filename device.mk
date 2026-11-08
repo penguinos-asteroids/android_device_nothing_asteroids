@@ -206,6 +206,19 @@ PRODUCT_HOST_PACKAGES += \
     vsdk-metadata
 endif
 
+# NFC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
+
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    NfcNci \
+    SecureElement \
+    Tag
+
 # QTI Components
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
@@ -217,7 +230,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     gps \
     init \
     media \
-    nfc \
     overlay \
     perf \
     telephony \
