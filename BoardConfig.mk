@@ -50,7 +50,6 @@ ADD_RADIO_FILES := false
 
 # Kernel
 BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.memcg=1 androidboot.usbcontroller=a600000.dwc3 androidboot.load_modules_parallel=true
-BOARD_BOOTCONFIG += androidboot.hypervisor.protected_vm.supported=true
 BOARD_BOOTCONFIG += androidboot.vendor.qspa=true
 BOARD_BOOTCONFIG += $(file < device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/extra_bootconfig)
 BOARD_BOOT_HEADER_VERSION := 4
