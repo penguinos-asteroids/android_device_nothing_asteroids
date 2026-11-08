@@ -107,6 +107,8 @@ TARGET_USES_NEW_ION := true
 PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/dataipa/ipanat
 
 # Kernel
+PRODUCT_VENDOR_KERNEL_HEADERS += $(DEVICE_PATH)/kernel-headers
+
 TARGET_KERNEL_DLKM_DISABLE := false
 TARGET_KERNEL_VERSION := 6.1
 
