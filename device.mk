@@ -103,6 +103,9 @@ PRODUCT_PACKAGES += \
 # ION
 TARGET_USES_NEW_ION := true
 
+# IPA
+PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/dataipa/ipanat
+
 # Kernel
 TARGET_KERNEL_DLKM_DISABLE := false
 TARGET_KERNEL_VERSION := 6.1
