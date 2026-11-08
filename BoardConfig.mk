@@ -33,11 +33,11 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # AVB - VBMeta Vendor
-BOARD_AVB_VBMETA_VENDOR := odm vendor vendor_dlkm
+BOARD_AVB_VBMETA_VENDOR := odm system_dlkm vendor vendor_dlkm
 BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 3
+BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 4
 
 # AVF
 PRODUCT_BUILD_DPM_IMAGE := true
@@ -70,7 +70,23 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
 # Partitions - A/B
-AB_OTA_PARTITIONS ?= boot init_boot vendor_boot recovery vendor vendor_dlkm system_dlkm odm dtbo vbmeta system system_ext product
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    init_boot \
+    odm \
+    product \
+    recovery \
+    system \
+    system_dlkm \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vendor \
+    vendor_boot \
+    vendor_dlkm
+
 AB_OTA_UPDATER := true
 
 # Partitions - Dynamic
