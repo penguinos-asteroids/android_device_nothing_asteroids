@@ -1461,7 +1461,6 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.vibrator.service.xml
 vendor/lib64/hw/vibrator.default.so
 vendor/lib64/libaacvibrator.so
 vendor/lib64/libqtivibratoreffect.so
-vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so
 vendor/lib64/vendor.qti.hardware.vibrator.impl.so
 
 # Vibrator (firmware)
