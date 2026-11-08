@@ -1,0 +1,68 @@
+on init
+    # SKU specific sysconfig and permissions
+    setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
+
+on fs
+    # Camera
+    mkdir /mnt/vendor/persist/camera 0777 cameraserver cameraserver
+
+    # Haptics
+    mkdir /mnt/vendor/persist/haptic
+    chmod 0771 /mnt/vendor/persist/haptic
+    chown system system /mnt/vendor/persist/haptic
+    chmod 0771 /mnt/vendor/persist/haptic/cali_data
+    chown system system /mnt/vendor/persist/haptic/cali_data
+    chown system system /sys/class/leds/vibrator_nt/lk_f0
+    chmod 0666 /sys/class/leds/vibrator_nt/lk_f0
+    restorecon /mnt/vendor/persist/haptic
+
+on late-fs && property:ro.boot.pbid=Base
+    # Camera
+    mount overlay overlay /vendor/etc/camera lowerdir=/vendor/etc/camera:/odm/overlayfs_origin/base/etc/camera,context=u:object_r:vendor_configs_file:s0
+
+on late-fs && property:ro.boot.pbid=Pro
+    # Camera
+    mount overlay overlay /vendor/etc/camera lowerdir=/vendor/etc/camera:/odm/overlayfs_origin/pro/etc/camera,context=u:object_r:vendor_configs_file:s0
+
+on post-fs-data
+    # Audio
+    chown audio audio /sys/bus/i2c/devices/13-0034/reg
+    chown audio audio /sys/bus/i2c/devices/13-0034/rw
+    chown audio audio /sys/bus/i2c/devices/13-0035/reg
+    chown audio audio /sys/bus/i2c/devices/13-0035/rw
+    chmod 0660 /sys/bus/i2c/devices/13-0034/reg
+    chmod 0660 /sys/bus/i2c/devices/13-0034/rw
+    chmod 0660 /sys/bus/i2c/devices/13-0035/reg
+    chmod 0660 /sys/bus/i2c/devices/13-0035/rw
+
+    # Camera
+    mkdir /data/vendor/camera 0775 camera camera
+    chmod 0444 /mnt/vendor/persist/camera/bokeh_caldata_uw_persist.bin
+    copy /mnt/vendor/persist/camera/bokeh_caldata_uw_persist.bin /data/vendor/camera/bokeh_caldata_uw_persist.bin
+    chmod 0444 /data/vendor/camera/bokeh_caldata_uw_persist.bin
+    chown cameraserver audio /data/vendor/camera/bokeh_caldata_uw_persist.bin
+    chmod 0444 /mnt/vendor/persist/camera/bokeh_caldata_tele_persist.bin
+    copy /mnt/vendor/persist/camera/bokeh_caldata_tele_persist.bin /data/vendor/camera/bokeh_caldata_tele_persist.bin
+    chmod 0444 /data/vendor/camera/bokeh_caldata_tele_persist.bin
+    chown cameraserver audio /data/vendor/camera/bokeh_caldata_tele_persist.bin
+    copy /vendor/etc/camera/bokeh_caldata_uw_golden.bin /data/vendor/camera/bokeh_caldata_uw_golden.bin
+    chmod 0444 /data/vendor/camera/bokeh_caldata_uw_golden.bin
+    chown cameraserver audio /data/vendor/camera/bokeh_caldata_uw_golden.bin
+    copy /vendor/etc/camera/bokeh_caldata_tele_golden.bin /data/vendor/camera/bokeh_caldata_tele_golden.bin
+    chmod 0444 /data/vendor/camera/bokeh_caldata_tele_golden.bin
+    chown cameraserver audio /data/vendor/camera/bokeh_caldata_tele_golden.bin
+    symlink /mnt/vendor/persist/sensors/registry/registry/volcano_qrd_ois_manager_0.json.ois_manager_0_platform.ois.fac_cal.bias /data/vendor/camera/ois_gyro_offset
+    chown cameraserver audio /data/vendor/camera/ois_gyro_offset
+    copy /mnt/vendor/persist/camera/ois_caldata_tele_persist.bin /data/vendor/camera/ois_gain_offset
+    chown cameraserver system /data/vendor/camera/ois_gain_offset
+
+on boot
+    # Fingerprint
+    chmod 0660 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+    mkdir /data/vendor/fpdump 0777 system system
+    restorecon /data/vendor/fpdump
+
+    # Haptics
+    chmod 0666 /proc/haptic/f0
+    chown system system /proc/haptic/f0

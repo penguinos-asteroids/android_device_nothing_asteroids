@@ -98,6 +98,7 @@ PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RA
 PRODUCT_PACKAGES += \
     fstab.default \
     fstab.emmc \
+    init.nt.rc \
     init.target.rc
 
 # ION
