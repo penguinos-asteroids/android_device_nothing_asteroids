@@ -120,6 +120,28 @@ on boot
     chown system /sys/devices/system/cpu/hyp_core_ctl/enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
 
+    # Camera
+    chmod 770 /proc/reserve_pool
+    chown cameraserver cameraserver /proc/reserve_pool
+    chmod 770 /proc/reserve_pool/reserve_pool
+    chown cameraserver cameraserver /proc/reserve_pool/reserve_pool
+    chmod 770 /proc/reserve_pool/inpool_pid
+    chown cameraserver cameraserver /proc/reserve_pool/inpool_pid
+    chmod 770 /proc/reserve_pool/inpool_pid_0
+    chown cameraserver cameraserver /proc/reserve_pool/inpool_pid_0
+    chmod 770 /proc/reserve_pool/inpool_pid_1
+    chown cameraserver cameraserver /proc/reserve_pool/inpool_pid_1
+    chmod 770 /proc/reserve_pool/inpool_pid_2
+    chown cameraserver cameraserver /proc/reserve_pool/inpool_pid_2
+    chmod 770 /proc/reserve_pool/inpool_pid_3
+    chown cameraserver cameraserver /proc/reserve_pool/inpool_pid_3
+    chmod 770 /proc/reserve_pool/reserve_pool_pages
+    chown cameraserver cameraserver /proc/reserve_pool/reserve_pool_pages
+    chmod 770 /proc/reserve_pool/reserve_pool_stat
+    chown cameraserver cameraserver /proc/reserve_pool/reserve_pool_stat
+    chmod 770 /proc/reserve_pool/reserve_pool_cpu_set
+    chown cameraserver cameraserver /proc/reserve_pool/reserve_pool_cpu_set
+
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
