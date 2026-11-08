@@ -128,9 +128,8 @@ TARGET_KERNEL_DLKM_DATAIPA_OVERRIDE := true
 TARGET_KERNEL_DLKM_FASTRPC_OVERRIDE := true
 TARGET_KERNEL_DLKM_SPU_OVERRIDE := true
 
-ifneq ("$(wildcard device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist)", "")
-PRODUCT_COPY_FILES += device/qcom/$(TARGET_BOARD_PLATFORM)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
-endif
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/modules/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 
 # Manifests
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest_volcano.xml
