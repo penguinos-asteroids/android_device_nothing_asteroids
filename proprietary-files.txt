@@ -75,6 +75,7 @@ vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
 vendor/lib64/hw/audio.primary.volcano.so
 vendor/lib64/hw/sound_trigger.primary.volcano.so
+vendor/lib64/libVoiceSdk.so
 vendor/lib64/lib_lvacfs.so
 vendor/lib64/libadm.so
 vendor/lib64/libar-acdb.so
@@ -540,6 +541,7 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/libaidenoiser.so
 vendor/lib64/libaidenoiserv2.so
+vendor/lib64/libarc.ion.so
 vendor/lib64/libarcsoft_ai_moon.so
 vendor/lib64/libarcsoft_aiscenedetection.so
 vendor/lib64/libarcsoft_beautyshot.so
@@ -550,6 +552,13 @@ vendor/lib64/libarcsoft_lensstaindetection.so
 vendor/lib64/libarcsoft_panorama.so
 vendor/lib64/libarcsoft_portrait_distortion_correction.so
 vendor/lib64/libarcsoft_qnnhtp.so
+vendor/lib64/libarcsoft_scbokeh_image.so
+vendor/lib64/libarcsoft_tfe_grf.so
+vendor/lib64/libarcsoft_tfe_hdr.so
+vendor/lib64/libarcsoft_tfe_hdr_front.so
+vendor/lib64/libarcsoft_tfe_sn.so
+vendor/lib64/libarcsoft_tfe_sn_front.so
+vendor/lib64/libarcsoft_tfe_super_resolution.so
 vendor/lib64/libbitmlengine.so
 vendor/lib64/libbitmlenginev2.so
 vendor/lib64/libcamerapostproc.so
@@ -566,6 +575,7 @@ vendor/lib64/libcamxswispiqmodule.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
 vendor/lib64/libchilog.so
+vendor/lib64/libcolorful.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libcv_common.so
 vendor/lib64/libhme.so
@@ -606,6 +616,8 @@ vendor/lib64/libopencv.so
 vendor/lib64/libopencv3a.so
 vendor/lib64/libopestriping.so
 vendor/lib64/libos.so
+vendor/lib64/libpfr.so
+vendor/lib64/libportrait_repair_qnn.so
 vendor/lib64/libqll.so
 vendor/lib64/libqll10.so
 vendor/lib64/libqllengine.so
@@ -725,18 +737,28 @@ vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.libmwqemiptablemgr.so
+vendor/lib64/vendor.qti.data.factoryservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.data.mwqem@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.data.mwqemaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.data.slm@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.cacert@1.0.so
+vendor/lib64/vendor.qti.hardware.data.cneaidlservice.internal.api-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.cneaidlservice.internal.constants-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.cneaidlservice.internal.server-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.dynamicddsaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.flow@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.flowaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.data.lce@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.lceaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.data.qmiaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.mwqemadapter@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.latency@2.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.latency@2.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.latencyaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # Configstore
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
@@ -1243,6 +1265,7 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/librilqmimiscservices.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/qcrilInterfaces.so
+vendor/lib64/qcrilIntermodulemsgs.so
 vendor/lib64/qcrilMarshal.so
 vendor/lib64/qcrilNrQmiModule.so
 vendor/lib64/qcrilNr_aidl_IQtiRadioConfig.so
@@ -1304,6 +1327,7 @@ vendor/lib64/libsns_registry_skel.so
 vendor/lib64/libsnsapi-full.so
 vendor/lib64/libsnsapi.so
 vendor/lib64/libsnsdiaglog.so
+vendor/lib64/libsnsutils.so
 vendor/lib64/libssc_default_listener.so
 
 # Sensors (config)
@@ -1460,6 +1484,7 @@ vendor/etc/richtapresources/weak/tick.he
 vendor/etc/vintf/manifest/vendor.qti.hardware.vibrator.service.xml
 vendor/lib64/hw/vibrator.default.so
 vendor/lib64/libaacvibrator.so
+vendor/lib64/libics_haptic.so
 vendor/lib64/libqtivibratoreffect.so
 vendor/lib64/vendor.qti.hardware.vibrator.impl.so
 
