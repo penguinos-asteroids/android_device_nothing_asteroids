@@ -45,6 +45,9 @@ PRODUCT_BUILD_DPM_IMAGE := true
 # Build
 BUILD_BROKEN_DUP_RULES := true
 
+# Display
+SOONG_CONFIG_qtidisplay := $(filter-out pxlw_vendor_namespace,$(SOONG_CONFIG_qtidisplay))
+
 # Firmware
 ADD_RADIO_FILES := false
 
