@@ -1400,7 +1400,6 @@ vendor/etc/sensors/sns_reg_config
 vendor/bin/hw/vendor.noth.hardware.sensor.sensor_extension-service
 vendor/etc/init/vendor.noth.hardware.sensor.sensor_extension-service.rc
 vendor/etc/vintf/manifest/vendor.noth.hardware.sensor.sensor_extension-service.xml
-vendor/lib64/libprotobuf-cpp-lite-21.7.so
 vendor/lib64/libsensor_extension.so
 vendor/lib64/vendor.noth.hardware.sensor.sensor_extension-V1-ndk_platform.so
 
