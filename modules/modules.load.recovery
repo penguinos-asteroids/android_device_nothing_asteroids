@@ -214,7 +214,6 @@ rpmb_state.ko
 sg.ko
 spi-msm-geni.ko
 spmi-pmic-arb-debug.ko
-at803x.ko
 msm_sharedmem.ko
 phy-generic.ko
 phy-qcom-emu.ko
@@ -285,7 +284,6 @@ nothing_task_meminfo.ko
 nothing_value_check.ko
 nothing_task_info.ko
 nothing_rdump.ko
-nothing_debug_control.ko
 nothing_performance.ko
 slimbus.ko
 slim-qcom-ngd-ctrl.ko

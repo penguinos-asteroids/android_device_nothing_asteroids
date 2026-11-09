@@ -76,6 +76,14 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(BOARD_VENDOR_KERNEL_MODU
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/modules.load.vendor_boot))
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/modules.load.recovery))
 
+# Kernel modules without source
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(DEVICE_PATH)/modules/prebuilt/camera4ldo-regulator.ko \
+    $(DEVICE_PATH)/modules/prebuilt/camera7ldo-regulator.ko
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+    $(DEVICE_PATH)/modules/prebuilt/camera4ldo-regulator.ko \
+    $(DEVICE_PATH)/modules/prebuilt/camera7ldo-regulator.ko
+
 # Partitions - A/B
 AB_OTA_PARTITIONS += \
     boot \
