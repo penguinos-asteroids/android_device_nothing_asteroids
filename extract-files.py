@@ -236,6 +236,20 @@ blob_fixups: blob_fixups_user_type = {
         'android.hardware.graphics.allocator-V2-ndk.so',
     ),
     (
+        'vendor/bin/qms',
+        'vendor/bin/xtra-daemon',
+        'vendor/lib64/libcne.so',
+        'vendor/lib64/libqcc_sdk.so',
+        'vendor/lib64/libqms_client.so',
+    ): blob_fixup().add_needed('libbinder_shim.so'),
+    'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
+        .add_needed('libbinder_shim.so')
+        .add_needed('libhidlbase_shim.so'),
+    (
+        'vendor/lib64/libntcamallocator.so',
+        'vendor/lib64/vendor.noth.hardware.camera-service-impl.so',
+    ): blob_fixup().add_needed('libui_shim.so'),
+    (
         'vendor/lib64/libVoiceSdk.so',
         'vendor/lib64/libcapiv2uvvendor.so',
         'vendor/lib64/liblistensoundmodel2vendor.so',
