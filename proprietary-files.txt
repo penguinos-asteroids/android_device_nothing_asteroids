@@ -76,6 +76,7 @@ vendor/etc/models/acd/speech.eai
 vendor/lib64/hw/audio.primary.volcano.so
 vendor/lib64/hw/sound_trigger.primary.volcano.so
 vendor/lib64/libVoiceSdk.so
+vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c-nothing.so;FIX_SONAME
 vendor/lib64/lib_lvacfs.so
 vendor/lib64/libadm.so
 vendor/lib64/libaudio_log_utils.so
