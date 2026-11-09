@@ -1,0 +1,9 @@
+type vendor_hal_iop_default, domain;
+type vendor_hal_iop_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_hal_iop_default)
+hwbinder_use(vendor_hal_iop_default)
+get_prop(vendor_hal_iop_default, hwservicemanager_prop)
+add_hwservice(vendor_hal_iop_default, vendor_hal_iop_hwservice)
+allow vendor_hal_iop_default proc:file r_file_perms;
+binder_call(lmkd, vendor_hal_iop_default)

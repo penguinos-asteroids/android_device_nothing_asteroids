@@ -1,0 +1,5 @@
+# Battery stats
+r_dir_file(system_server, vendor_sysfs_battery_supply)
+
+# Qualcomm perf libs ask for services this device does not have
+dontaudit system_server vendor_hal_snapx_service:service_manager find;

@@ -1,0 +1,2 @@
+vendor.camera.ncf.                      u:object_r:vendor_nothing_camera_prop:s0
+persist.vendor.nfc_getcplc_completed    u:object_r:vendor_nfc_prop:s0

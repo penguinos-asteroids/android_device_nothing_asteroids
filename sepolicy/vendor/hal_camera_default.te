@@ -1,0 +1,2 @@
+allow hal_camera_default ntf_file:file r_file_perms;
+allow hal_camera_default vendor_camera_data_file:lnk_file read;

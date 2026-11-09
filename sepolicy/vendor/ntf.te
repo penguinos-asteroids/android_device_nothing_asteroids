@@ -1,0 +1,9 @@
+type ntf, domain;
+type ntf_exec, exec_type, vendor_file_type, file_type;
+type ntf_file, dev_type;
+
+init_daemon_domain(ntf)
+
+allow ntf device:dir rw_dir_perms;
+type_transition ntf device:file ntf_file;
+allow ntf ntf_file:file { create_file_perms relabelto };

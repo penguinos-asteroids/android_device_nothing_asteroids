@@ -1,0 +1,4 @@
+# RichTap haptics device and calibration
+allow hal_vibrator_default aac_richtap_dev_device:chr_file rw_file_perms;
+allow hal_vibrator_default mnt_vendor_file:dir search;
+allow hal_vibrator_default mnt_vendor_file:file r_file_perms;

@@ -169,3 +169,6 @@ BOARD_MKBOOTIMG_INIT_ARGS += --os_patch_level $(BOOT_PATCH_LEVEL)
 
 # SELinux
 TARGET_SEPOLICY_DIR := pineapple
+
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += device/nothing/asteroids/sepolicy/vendor

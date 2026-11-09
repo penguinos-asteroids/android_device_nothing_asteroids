@@ -1,0 +1,2 @@
+type vendor_hal_noth_camera_service, hal_service_type, service_manager_type;
+type hal_sensor_extension_aidl_service, hal_service_type, service_manager_type;

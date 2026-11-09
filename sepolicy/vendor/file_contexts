@@ -1,0 +1,14 @@
+# Binaries
+/vendor/bin/ntf-service                                                  u:object_r:ntf_exec:s0
+/vendor/bin/st_getcplc                                                   u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/android\.hardware\.power\.stats-service                   u:object_r:hal_power_stats_default_exec:s0
+/vendor/bin/hw/android\.hardware\.secure_element-service\.thales         u:object_r:hal_secure_element_default_exec:s0
+/vendor/bin/hw/vendor\.noth\.hardware\.camera-service                    u:object_r:vendor_hal_camera_default_exec:s0
+/vendor/bin/hw/vendor\.noth\.hardware\.sensor\.sensor_extension-service  u:object_r:vendor_sensor_extension_default_exec:s0
+/vendor/bin/hw/vendor\.nothing\.hardware\.biometrics\.fingerprint-service u:object_r:hal_fingerprint_default_exec:s0
+/vendor/bin/hw/vendor\.qti\.hardware\.iop@2\.0-service                   u:object_r:vendor_hal_iop_default_exec:s0
+
+# Devices
+/dev/ntfeature                                                           u:object_r:ntf_file:s0
+/dev/aac_richtap                                                         u:object_r:aac_richtap_dev_device:s0
+/dev/ics_sfdc                                                            u:object_r:aac_richtap_dev_device:s0
