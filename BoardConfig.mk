@@ -162,3 +162,9 @@ include device/qcom/wlan/volcano/BoardConfigWlan.mk
 
 # Vendor BoardConfig
 include vendor/nothing/asteroids/BoardConfigVendor.mk
+
+# Boot patch level
+# Stock C5.0 boot images carry 2026-11, TZ refuses older ones once that has booted
+BOOT_PATCH_LEVEL := 2026-11-01
+BOARD_MKBOOTIMG_ARGS += --os_patch_level $(BOOT_PATCH_LEVEL)
+BOARD_MKBOOTIMG_INIT_ARGS += --os_patch_level $(BOOT_PATCH_LEVEL)
