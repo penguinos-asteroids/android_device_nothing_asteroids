@@ -117,6 +117,11 @@ vendor/etc/microphone_characteristics.xml
 vendor/etc/r_submix_audio_policy_configuration.xml
 vendor/etc/usb_audio_policy_configuration.xml
 vendor/etc/usecaseKvManager.xml
+vendor/etc/audio/sku_volcano/audio_effects.xml
+vendor/etc/audio/sku_volcano/mixer_paths_volcano_qrd.xml
+vendor/etc/audio/sku_volcano/resourcemanager_volcano_qrd.xml
+vendor/etc/audio/sku_volcano_qssi/audio_effects.xml
+vendor/etc/audio/sku_volcano_qssi/audio_policy_configuration.xml
 
 # Audio (firmware)
 vendor/firmware/tfa98xx.cnt
