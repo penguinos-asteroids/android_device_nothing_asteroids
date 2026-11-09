@@ -90,6 +90,11 @@ BOARD_HAVE_QCOM_FM := false
 # Image Generation Tool
 TARGET_USES_IMAGE_GEN_TOOL := true
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0-service \
+    hwservicemanager
+
 # Init
 PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
 PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc
