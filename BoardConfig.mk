@@ -168,3 +168,6 @@ include vendor/nothing/asteroids/BoardConfigVendor.mk
 BOOT_PATCH_LEVEL := 2026-11-01
 BOARD_MKBOOTIMG_ARGS += --os_patch_level $(BOOT_PATCH_LEVEL)
 BOARD_MKBOOTIMG_INIT_ARGS += --os_patch_level $(BOOT_PATCH_LEVEL)
+
+# SELinux
+TARGET_SEPOLICY_DIR := pineapple
