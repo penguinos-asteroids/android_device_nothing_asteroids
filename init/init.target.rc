@@ -106,6 +106,9 @@ on early-boot
     start vendor.pd_mapper
     exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_adsp/boot 1
     exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_cdsp/boot 1
+    # Boot WPSS for Wi-Fi
+    write /sys/kernel/icnss/wlan_en_delay 1000
+    write /sys/kernel/icnss/wpss_boot 1
 
 on boot
     write /dev/cpuset/audio-app/cpus 0-1
