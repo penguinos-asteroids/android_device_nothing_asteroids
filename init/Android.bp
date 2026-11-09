@@ -23,3 +23,10 @@ prebuilt_etc {
     sub_dir: "init/hw",
     vendor: true,
 }
+
+prebuilt_etc {
+    name: "vendor.audio-hal-asteroids.rc",
+    src: "vendor.audio-hal-asteroids.rc",
+    sub_dir: "init",
+    vendor: true,
+}

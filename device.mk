@@ -103,7 +103,8 @@ PRODUCT_PACKAGES += \
     fstab.default \
     fstab.emmc \
     init.nt.rc \
-    init.target.rc
+    init.target.rc \
+    vendor.audio-hal-asteroids.rc
 
 # ION
 TARGET_USES_NEW_ION := true
