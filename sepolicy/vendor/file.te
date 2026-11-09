@@ -1,0 +1,3 @@
+type proc_vibrate, fs_type, proc_type;
+type proc_vibrator, fs_type, proc_type;
+type sysfs_panel_feature, fs_type, sysfs_type;

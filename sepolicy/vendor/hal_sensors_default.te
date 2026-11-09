@@ -1,0 +1,2 @@
+# Panel id picks the light sensor calibration
+allow hal_sensors_default sysfs_panel_feature:file r_file_perms;
