@@ -185,6 +185,9 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
     sensors.dynamic_sensor_hal
 
+# SMMU
+TARGET_USES_SMMU_PROXY := true
+
 # SMCI
 TARGET_ENABLE_SMCI_SYSLISTENER := true
 
