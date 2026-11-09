@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Values from Nothing OS 5 for Nothing Phone (3a) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <integer-array name="config_ambientBrighteningThresholds">
+        <item>10000</item>
+        <item>5000</item>
+        <item>4333</item>
+        <item>3666</item>
+        <item>3000</item>
+        <item>2760</item>
+        <item>2520</item>
+        <item>2280</item>
+        <item>2040</item>
+        <item>1800</item>
+        <item>800</item>
+        <item>527</item>
+        <item>500</item>
+        <item>400</item>
+        <item>248</item>
+        <item>100</item>
+    </integer-array>
+    <integer-array name="config_ambientDarkeningThresholds">
+        <item>853</item>
+        <item>700</item>
+        <item>683</item>
+        <item>666</item>
+        <item>650</item>
+        <item>640</item>
+        <item>630</item>
+        <item>620</item>
+        <item>610</item>
+        <item>600</item>
+        <item>500</item>
+        <item>500</item>
+        <item>440</item>
+        <item>385</item>
+        <item>311</item>
+        <item>200</item>
+    </integer-array>
+    <integer-array name="config_ambientThresholdLevels">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+    </integer-array>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>10</item>
+        <item>20</item>
+        <item>40</item>
+        <item>70</item>
+        <item>110</item>
+        <item>160</item>
+        <item>200</item>
+        <item>255</item>
+    </integer-array>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>100</item>
+        <item>150</item>
+        <item>210</item>
+        <item>255</item>
+    </integer-array>
+    <integer name="config_autoBrightnessShortTermModelTimeout">120000</integer>
+    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
+    <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
+    <integer name="config_chargingFastThreshold">14900000</integer>
+    <integer name="config_defaultPeakRefreshRate">240</integer>
+    <integer name="config_defaultRefreshRate">0</integer>
+    <bool name="config_displayWhiteBalanceAvailable">true</bool>
+    <integer name="config_displayWhiteBalanceColorTemperatureDefault">6500</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureMax">6800</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureMin">5400</integer>
+    <bool name="config_displayWhiteBalanceEnabledDefault">true</bool>
+    <integer name="config_displayWhiteBalanceTransitionTimeDecrease">3000</integer>
+    <integer name="config_displayWhiteBalanceTransitionTimeIncrease">3000</integer>
+    <integer name="config_doubleTapPowerGestureMode">1</integer>
+    <bool name="config_dozeAfterScreenOff">true</bool>
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+    <string name="config_dozeComponent" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
+    <string name="config_mainBuiltInDisplayCutout" translatable="false">M540,68.6m-21.5,0a21.5,21.5 0,1 1,43 0a21.5,21.5 0,1 1,-43 0 @left</string>
+    <string name="config_mainBuiltInDisplayCutoutRectApproximation" translatable="false">M454.0, 0.0 h 86.0 v 126 h -86.0 Z @left</string>
+    <string name="config_mainDisplayShape" translatable="false">M20 0h1040s20 0 20 20v2360s0 20 -20 20h-1040s-20 0 -20 -20v-2360s0 -20 20 -20</string>
+    <integer name="config_nightDisplayColorTemperatureDefault">4130</integer>
+    <integer name="config_nightDisplayColorTemperatureMax">5000</integer>
+    <integer name="config_nightDisplayColorTemperatureMin">4000</integer>
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+    <integer name="config_reduceBrightColorsStrengthDefault">25</integer>
+    <integer name="config_reduceBrightColorsStrengthMax">60</integer>
+    <integer name="config_reduceBrightColorsStrengthMin">25</integer>
+    <item name="config_screenBrightnessDimFloat" format="float" type="dimen">0.05</item>
+    <integer name="config_screenBrightnessDoze">17</integer>
+    <item name="config_screenBrightnessDozeFloat" format="float" type="dimen">0.05</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0</item>
+    <bool name="config_showNavigationBar">true</bool>
+    <integer name="config_shutdownBatteryTemperature">600</integer>
+    <bool name="config_supportLongPressPowerWhenNonInteractive">true</bool>
+    <string-array name="config_telephonyEuiccDeviceCapabilities" translatable="false">
+        <item>gsm,9</item>
+        <item>utran,9</item>
+        <item>eutran,16</item>
+    </string-array>
+    <string-array name="config_tether_bluetooth_regexs" translatable="false">
+        <item>bnep\d</item>
+        <item>bt-pan</item>
+    </string-array>
+    <string-array name="config_tether_wifi_regexs" translatable="false">
+        <item>softap0</item>
+        <item>wlan0</item>
+    </string-array>
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
+    <dimen name="rounded_corner_content_padding">0dp</dimen>
+    <dimen name="rounded_corner_radius">100px</dimen>
+    <dimen name="status_bar_height">126px</dimen>
+    <dimen name="status_bar_height_default">126px</dimen>
+    <dimen name="status_bar_height_landscape">36dp</dimen>
+    <dimen name="status_bar_height_portrait">126px</dimen>
+</resources>

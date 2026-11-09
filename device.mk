@@ -273,3 +273,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 
 # Vendor Makefile
 $(call inherit-product, vendor/nothing/asteroids/asteroids-vendor.mk)
+
+# Overlays
+PRODUCT_PACKAGES += \
+    FrameworksResAsteroids
