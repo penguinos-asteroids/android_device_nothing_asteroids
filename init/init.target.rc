@@ -232,3 +232,11 @@ service fan_control_turn_off /vendor/bin/fan_service 0
     disabled
     oneshot
 
+# Stock does not ship msm_irqbalance or its config, do not restart it in a loop
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+    override
+    class core
+    user root
+    group root
+    disabled
+    oneshot
