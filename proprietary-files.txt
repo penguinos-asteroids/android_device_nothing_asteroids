@@ -1141,6 +1141,8 @@ vendor/etc/libnfc-nci.conf
 # NFC (ST)
 odm/etc/vintf/manifest_JPN.xml
 vendor/bin/hw/android.hardware.nfc-service-st
+vendor/bin/st_getcplc
+vendor/etc/init/st_getcplc.rc
 vendor/etc/init/nfc-service-st.rc
 vendor/firmware/st21nfc_fw.bin
 vendor/firmware/st21nfc_fw7.bin
