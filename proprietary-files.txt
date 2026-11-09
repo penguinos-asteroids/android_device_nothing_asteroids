@@ -623,6 +623,11 @@ vendor/lib64/libvideoml.so
 vendor/lib64/vendor.noth.hardware.camera-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so:vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-nothing.so;FIX_SONAME
+vendor/lib64/hw/camera.qcom.milos.so
+vendor/lib64/libisphwsetting.so
+vendor/lib64/com.qti.feature2.gs.milos.so
+vendor/lib64/com.qti.settings.milos.so
+vendor/lib64/com.qti.feature2.afbrckt.so
 
 # Camera (firmware)
 vendor/firmware/CAMERA_ICP.b00
@@ -778,6 +783,9 @@ vendor/lib64/libdsutils.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
+vendor/lib64/libWlanServiceJni.so
+vendor/bin/ssgqmigd
+vendor/etc/seccomp_policy/qms.policy
 
 # Diag
 vendor/bin/diag-router
@@ -1039,6 +1047,8 @@ vendor/etc/init/vendor.qti.hardware.limits-service.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.limits-service.xml
 vendor/lib64/vendor.qti.hardware.limits@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.limits@1.1.so;MODULE_SUFFIX=_vendor
+vendor/bin/hw/vendor.qti.hardware.limits@1.2-service
+vendor/lib64/vendor.qti.hardware.limits@1.2.so;MODULE_SUFFIX=_vendor
 
 # Media
 vendor/bin/init.qti.media.sh
@@ -1197,6 +1207,7 @@ vendor/lib64/libsmemlog.so
 # QSEECOM
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
 vendor/bin/qseecomd
+vendor/lib64/libgpt.so
 vendor/etc/gpfspath_oem_config.xml
 vendor/etc/init/qseecomd.rc
 vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
@@ -1447,6 +1458,7 @@ system_ext/etc/sltntc/sltntc_SM8475.conf
 vendor/bin/thermal-engine-v2
 vendor/etc/init/init_thermal-engine-v2.rc
 vendor/lib64/libthermalclient.so
+vendor/etc/thermal-engine.conf
 
 # Time Services
 vendor/app/TimeService/TimeService.apk
