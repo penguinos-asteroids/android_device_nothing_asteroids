@@ -200,6 +200,9 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service.qti
+
 PRODUCT_PACKAGES_DEBUG += \
     thermal-test-client
 
