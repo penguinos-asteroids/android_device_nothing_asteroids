@@ -522,7 +522,7 @@ vendor/lib64/libarc.ion.so
 vendor/lib64/libarcsoft_ai_moon.so
 vendor/lib64/libarcsoft_aiscenedetection.so
 vendor/lib64/libarcsoft_beautyshot.so
-vendor/lib64/libarcsoft_dark_vision_raw.so
+vendor/lib64/libarcsoft_dark_vision_raw.so;DISABLE_CHECKELF
 vendor/lib64/libarcsoft_dualcam_refocus_image.so
 vendor/lib64/libarcsoft_dualcam_refocus_preview.so
 vendor/lib64/libarcsoft_lensstaindetection.so
